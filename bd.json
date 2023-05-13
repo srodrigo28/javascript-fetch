@@ -43,6 +43,11 @@
       "id": 2,
       "nome": "serviço nuvem",
       "status": false
+    },
+    {
+      "id": 3,
+      "nome": "Bater o gaminho",
+      "status": false
     }
   ]
 }
