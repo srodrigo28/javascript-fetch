@@ -1,0 +1,48 @@
+{
+  "tarefas": [
+    {
+      "id": 1,
+      "nome": "lavar o carro",
+      "status": false
+    },
+    {
+      "id": 2,
+      "nome": "comprar sapatos",
+      "status": false
+    },
+    {
+      "id": 3,
+      "nome": "pagar cartão",
+      "status": false
+    }
+  ],
+  "contas": [
+    {
+      "id": 1,
+      "nome": "pagar energia",
+      "status": false
+    },
+    {
+      "id": 2,
+      "nome": "pagar escola",
+      "status": false
+    },
+    {
+      "id": 3,
+      "nome": "pagar cartão",
+      "status": false
+    }
+  ],
+  "recebi": [
+    {
+      "id": 1,
+      "nome": "serviço câmeras",
+      "status": false
+    },
+    {
+      "id": 2,
+      "nome": "serviço nuvem",
+      "status": false
+    }
+  ]
+}

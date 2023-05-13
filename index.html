@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <title>Lembre-te</title>
+</head>
+
+<style>
+    body{
+        padding: 15px;
+    }
+    .hide{display: none;}
+    a, input[type="submit"]{
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        opacity: .7;
+        font-size: 1em;
+        border:none;
+        cursor: pointer;
+    }
+
+    a:hover,
+    input[type="submit"]{
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <h1 
+        class="titulo">
+        Lembre-te
+     </h1>
+    <p id="loading">carregando...</p>
+    <div id="posts-container"> </div>
+
+    <script>
+        // console.log('testando...')
+        // Link::   https://www.freecodecamp.org/portuguese/news/tutorial-de-fetch-api-em-javascript-exemplos-de-post-e-cabecalho/
+        // http://localhost:3001/recebi'
+       
+        /** Exemplo 1
+         *
+         *  
+        let _data = {
+            nome: "teste api",
+            status: true
+        }
+        */
+        /** Inserir 
+            function Inserir(){
+                fetch('http://localhost:3001/recebi', {
+                    method: "POST",
+                    body: JSON.stringify(_data),
+                    headers: {"Content-type": "application/json; charset=UTF-8"}
+                })
+                .then(response => response.json()) 
+                .then(json => console.log(json))
+                .catch(err => console.log(err))
+            }
+            // Inserir();
+        */
+        /** Delete 
+        function Delete(id){
+            fetch(`http://localhost:3001/recebi/${id}`, {
+                method: "DELETE",
+                // body: JSON.stringify(_data),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+            })
+            .then(response => response.json()) 
+            .then(json => console.log(json))
+            .catch(err => console.log(err))
+        }
+        // Delete(79);
+        */
+        /** Listar
+            function Listar(){
+                fetch('http://localhost:3001/recebi', {
+                    method: "GET",
+                    //body: JSON.stringify(_data),
+                    headers: {"Content-type": "application/json; charset=UTF-8"}
+                })
+                .then(
+                    res => response.json(res)
+                ) 
+                .then(json => console.log(json))
+                .catch(err => console.log(err))
+            }
+            // Listar();
+        */
+    </script>
+
+    <script>
+        let id = '';
+        const url = "http://localhost:3001/recebi";
+        const urlDelete = url+id;
+
+        const loadingElement = document.querySelector('#loading')
+        const postContainer = document.querySelector('#posts-container')
+
+        // Get all posts
+
+        async function getAllPosts(){
+            const response = await fetch(url);
+
+            console.log(response);
+
+            const data = await response.json();
+            console.log(data);
+
+            loadingElement.classList.add("hide");
+
+            data.map((post) => {
+                const div = document.createElement("div")
+                const title = document.createAttribute("h2")
+                const body = document.createAttribute("p")
+                const link = document.createAttribute("a")
+
+                title.innerText = post.
+            })
+        }
+        getAllPosts();
+    </script>
+</body>
+</html>

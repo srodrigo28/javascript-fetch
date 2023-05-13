@@ -1,0 +1,92 @@
+*{
+    margin: 0; padding: 0; outline: none; border: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+:root{
+    --background-01: #AA0000;
+    --background-02: #4FFFB0;
+    --background-03: #AA0000;
+}
+body{
+    background: #4FFFB0;
+
+    margin-top: 50px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.img-titulo{ width: 50px; margin-bottom: -15px; margin-left: -15px;}
+.titulo{ 
+    border-bottom: 3px solid black }
+form{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    width: 100%;
+    padding: 23px;
+    border-radius: 10px;
+}
+input:focus{
+    background-color: bisque;
+    font-family: bold;
+    font-size: 15px;
+}
+button{
+    padding: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover{
+    background-color: bisque;
+}
+.lista{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.fa-trash{ 
+    color: red;
+    font-size: 20px;
+    opacity: 0;
+}
+.fa-trash:hover{ 
+    color: red;
+    font-size: 20px;
+    opacity: 1;
+}
+.fa-circle-check{ 
+    color: green;
+    font-size: 20px;
+    opacity: 0;
+}
+.fa-circle-check:hover{ 
+    color: green;
+    font-size: 20px;
+    opacity: 1;
+}
+.lista-item{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: aqua;
+    padding: 20px;
+    transition: .5s;
+}
+.lista .lista-item:hover{
+    font-size: 20px;
+    background-color: beige;
+}
