@@ -1,0 +1,18 @@
+{
+  "produtos": [
+    {
+      "id": "efda",
+      "nome": "PlayStation 4",
+      "url": "https://http2.mlstatic.com/D_NQ_NP_798586-MLA40076060236_122019-O.webp",
+      "preco": "2300",
+      "quantidade": "10"
+    },
+    {
+      "id": "05f3",
+      "nome": "PlayStation 5",
+      "url": "https://http2.mlstatic.com/D_NQ_NP_859146-MLU73266765076_122023-O.webp",
+      "preco": "4500",
+      "quantidade": "10"
+    }
+  ]
+}
