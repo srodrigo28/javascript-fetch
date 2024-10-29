@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <title>Crud</title>
+</head>
+<body>
+    <header class="d-flex flex-row align-item-center justify-content-between px-5 bg-success p-3 text-white" >
+      <h1>Controle de Produtos</h1>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Novo
+      </button>
+    </header>
+
+    <main>
+      <div class="card"></div>
+    </main>
+
+    <div class="container">
+    <!-- INICIO MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Novo produto</h1>
+              <button type="button" class="btn-close btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <input type="text" placeholder="Nome do produto" class="form-control" id="nome">
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                  <input type="text" placeholder="exemplo : http://www.image.jpg.com" class="form-control" id="url">
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                  <input type="text" placeholder="Quantidade" class="form-control" id="quantidade">
+                </div>
+                <div class="col">
+                  <input type="text" placeholder="Preço" class="form-control" id="preco">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-success" id="btn-inserir" onclick="Inserir()">Inserir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIM MODAL -->
+
+    <script>
+      let div = document.querySelector('.card');
+      let output = ""
+      let api_url = "http://localhost:3000/produtos";
+      let nome = document.querySelector('#nome')
+      let url = document.querySelector('#url')
+      let preco = document.querySelector('#preco')
+      let quantidade = document.querySelector('#quantidade')
+      let btn_inserir = document.querySelector('#btn-inserir')
+
+      function Inserir(){
+          fetch( api_url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              nome: nome.value,
+              url: url.value,
+              preco: preco.value,
+              quantidade: quantidade.value
+            })
+          })
+          alert('Salvo com sucesso')
+      }
+    
+      div.addEventListener("click", (e) => {
+        e.preventDefault()
+        let buttonApagar = e.target.id == "apagar"
+        let buttonEditar = e.target.id == "editar"
+
+        let id_card = e.target.parentElement.dataset.id;
+
+        if(buttonApagar){
+
+          let confirm = window.confirm(" Deseja apagar ? ")
+          
+          if(confirm == true){
+            fetch(`${api_url}/${id_card}`, {
+                method: 'DELETE'
+              })
+              .then( res => res.json() )
+              .then( () => location.reload() )
+              console.log("Apagando " + buttonApagar)
+            }
+          }
+        if(buttonEditar){
+          console.log( "card_id " + e.target.parentElement.dataset.id );
+          console.log( "Editando " + buttonEditar )
+        }
+      })
+     
+      function lista(){
+        fetch(api_url, {
+
+        })
+        .then( res => res.json())
+        .then( data => {
+          data.forEach( item => {
+            output += `
+              <div class="card-item" data-id=${item.id}>
+                <h2> ${item.nome} </h2>
+                <p> Disponivel ${item.quantidade} </p>
+                <p> R$ ${item.preco} </p>
+                <img width="100" src="${item.url}" />
+                
+                <button id="editar">Edit</button>  
+                <button id="apagar">Dell</button>  
+                
+              </div>
+            `;
+          });
+          div.innerHTML = output;
+        })
+      }
+      lista()
+
+    </script>
+
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+</body>
+</html>
